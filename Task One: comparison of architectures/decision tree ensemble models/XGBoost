@@ -31,7 +31,7 @@ feature_variables = ["measured_mz",
                      "enzymatic"]
 
 # stratification setup and selected feature variable
-# *label encoding setup for XGBoost only as scaling measure* *used for all label arrays for training* *3 instances* 
+# *label encoding setup for XGBoost only as scaling measure* *used for all label arrays for training* *3 instances*
 stratified_kfold_setup = StratifiedKFold(n_splits=3, random_state=1, shuffle=True)
 selected_feature_variable = ['pep']
 label_encoding = LabelEncoder()
@@ -236,7 +236,7 @@ def counting_system(input_psms_original, targets_count_list, predictor_dataframe
         return best_predictor_output_confusion_matrix
 
 
-# begin raw classification function and collect ranked predictions
+# rank in ascending order by pep feature variable and estimate FDR
 pep_ranked_dataset = psm_dataset.sort_values(by=['pep'])
 fdr_dataset_pep = fdr_calculation(pep_ranked_dataset)
 
