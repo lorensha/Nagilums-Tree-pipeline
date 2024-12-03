@@ -1,12 +1,12 @@
+# import libraries and Python file: calculations
 import numpy as np
 import time
 import pandas as pd
-from sklearn import preprocessing
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from sklearn.ensemble import ExtraTreesClassifier
-
-from calculations import *
 import os
+from calculations import *
+
 start_time = time.time()
 # setup base estimator: feature variables & class labels
 feature_variables = ["measured_rt",
