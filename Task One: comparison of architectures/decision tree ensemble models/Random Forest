@@ -228,7 +228,7 @@ def counting_system(input_psms_original, targets_count_list, predictor_dataframe
         return best_predictor_output_confusion_matrix
 
 
-# begin raw classification function and collect ranked predictions
+# rank in ascending order by pep feature variable and estimate FDR
 pep_ranked_dataset = psm_dataset.sort_values(by=['pep'])
 fdr_dataset_pep = fdr_calculation(pep_ranked_dataset)
 
