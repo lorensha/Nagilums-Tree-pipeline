@@ -117,12 +117,12 @@ def cumulative_count_pep_scores_of_canonical_psms(decoy_seq_dataframe_list, deco
     plt.bar(df_title_list_x_axis - 0.2, decoy_seq_canonical_count_list, 0.4, color='lightsteelblue', label='canonical PSM')
     plt.bar(df_title_list_x_axis + 0.2, decoy_variant_canonical_count_list, 0.4, color='thistle', label='variant PSM')
 
-    plt.legend(['decoy sequence search', 'decoy variant search'], bbox_to_anchor=(1, 1))
+    plt.legend(['decoy sequence search', 'decoy variant search'], bbox_to_anchor=(1, 1), label='Search strategy')
 
     plt.xticks(df_title_list_x_axis, df_title_list, rotation=45, ha='right')
     plt.xlabel('iPSC development stage and type', labelpad=15.0, fontweight='bold')
     plt.ylabel('Number of spectra', labelpad=15.0, fontweight='bold')
-    plt.title('comparison of number of classified canonical PSMs decoy seq and decoy variant search')
+    plt.title('comparison of search strategies: number of classified canonical PSMs')
 
     plt.savefig('cumulative count canonical PSM.png', bbox_inches='tight', dpi=600, pad_inches=0.1)
     plt.show()
@@ -164,7 +164,7 @@ def cumulative_count_pep_scores_of_variant_psms(decoy_seq_dataframe_list, decoy_
     plt.xticks(df_title_list_x_axis, df_title_list, rotation=45, ha='right')
     plt.xlabel('iPSC development stage and type', labelpad=15.0, fontweight='bold')
     plt.ylabel('Number of spectra', labelpad=15.0, fontweight='bold')
-    plt.title('comparison of number of classified variant PSMs decoy seq and decoy variant search')
+    plt.title('comparison of search strategies: number of classified variant PSMs')
 
     plt.savefig('cumulative count variant PSM.png', bbox_inches='tight', dpi=600, pad_inches=0.1)
     plt.show()
