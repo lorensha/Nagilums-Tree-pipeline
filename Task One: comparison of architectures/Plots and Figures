@@ -35,7 +35,7 @@ def task_one_histogram_plots(dataframe_list):
 
         fig.legend(["non-random PSMs", "random PSMs"], bbox_to_anchor=(0.965, 0.878), loc='upper left')
 
-        plt.savefig(df_title + 'histograms.png', bbox_inches='tight', dpi=600)
+        plt.savefig(df_title + ' histograms.png', bbox_inches='tight', dpi=600)
         plt.show()
 
 
