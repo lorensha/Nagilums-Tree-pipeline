@@ -1,9 +1,10 @@
+# import libraries and Python file: Calculations
 import numpy as np
 import time
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
-from calculations import *
+from Calculations import *
 
 # PSM dataset: Tonsil pp (Wang et al)
 psm_dataset = pd.read_table('Chapter_One_Tonsil_Input_File.txt', header=0)
