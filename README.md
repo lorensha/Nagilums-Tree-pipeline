@@ -17,5 +17,5 @@ A brief description of the tasks are provided below:
 
 ## **Task one** 
 
-[Task One]()
+[Task One](https://github.com/lorensha/Nagilums_Tree/tree/991e08fc209da806fcd8240d57f25fe3b28ce680/Task%20One%3A%20comparison%20of%20architectures)
 
