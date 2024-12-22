@@ -15,7 +15,12 @@ Three implementation tasks are incorporated into this pipeline using the same cl
 
 A brief description of the tasks are provided below:
 
-## **Task one** 
+## [**Task One**](https://github.com/lorensha/Nagilums_Tree/tree/991e08fc209da806fcd8240d57f25fe3b28ce680/Task%20One%3A%20comparison%20of%20architectures)
+The folder [decision tree ensemble models]() contains five Python files, one for each of the decision tree ensmeble architectures:
+- Random Forest
+- ExtraTree
+- Gradient Boosting
+- Histogram-based Gradient Boosting
+- XGBoost
 
-[Task One](https://github.com/lorensha/Nagilums_Tree/tree/991e08fc209da806fcd8240d57f25fe3b28ce680/Task%20One%3A%20comparison%20of%20architectures)
 
