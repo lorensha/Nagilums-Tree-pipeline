@@ -35,16 +35,22 @@ The [Graphical visualisation](https://github.com/lorensha/Nagilums-Tree-pipeline
 
 The figures will receive the appropriate title of the architecture with all legends and descriptors.
 
-## [Task 2: Decoy variant concept]()
+## [Task 2: Decoy variant concept](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/d28b746a761f2ab74cacc4da54df617b8f6cae44/Task%202%3A%20Decoy%20variant%20concept)
 This folder contains the Python files required to conduct the [decoy variant strategy](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/d644e651a57059bc12393dcc9ff87d53cbad9030/Task%202%3A%20Decoy%20variant%20concept/decoy_variant_search_strategy.py) and the [decoy seq strategy](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/d644e651a57059bc12393dcc9ff87d53cbad9030/Task%202%3A%20Decoy%20variant%20concept/decoy_sequence_search_strategy.py). 
 
 The [Calculations](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/calculations.py) Python file is required to be in place for the classification system to execute calculations concerning FDR, PEP and confusion matrix.
 
 The files are setup to iterate through a local folder containing the iPSC PSM data files. Classification is setup for the ExtraTrees architecture under the Scikit-learn library. The classified PSM datasets are saved locally as .csv files with the appropriate names of the iPSC development stage (Stage 0 and Stage 4) and cell type (wild type and mutant).
 
-The [Graphical visualisation](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/graphical_visualisation.py) file is setup to receive all 12 for both the _decoy variant strategy_ and _decoy seq strategy_ files and return figures from plots_and_figures(https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/plots_and_figures.py):
+The [Graphical visualisation](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/graphical_visualisation.py) file is setup to receive all 12 for both the _decoy variant strategy_ and _decoy seq strategy_ files and return figures from [plots_and_figures](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/plots_and_figures.py):
 - Histograms
 - Cumulative count of PEP comparisons
 - PEP distribution plots
 
+## [Task 3: MODY expression analysis](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/d28b746a761f2ab74cacc4da54df617b8f6cae44/Task%203%3A%20MODY%20expression%20analysis)
 
+The [MODY gene .txt. files](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/34b3c6ae746f9e9fafa00be669a3bb4acac98391/Task%203%3A%20MODY%20expression%20analysis/MODY%20gene%20.txt%20files) folder contains a file of the 14 MODY genes and a collective list of possible MODY genes
+
+The [MODY expression plots](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/9fee31449552b9f23c6e5a45c34d594094576869/Task%203%3A%20MODY%20expression%20analysis/MODY%20expression%20plots) folder contains the Python files to create the MODY PEP expression plots visualised in the Thesis, supplementary figures of the collective MODY list and MODY expression of the variant PSMs only.
+
+The protein-protein interaction network map is created using STRING API for future works and the Python file is included in this folder.
