@@ -16,17 +16,17 @@ Three implementation tasks are incorporated into this pipeline using the same cl
 A brief description of the tasks are provided below:
 
 ## [**Task 1: Comparison of ML architectures**](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/5c9c79f221e35b1ff1c3559e8c39d1f4b26dc041/Task%201%3A%20Comparison%20of%20ML%20architectures)
-The folder [decision tree ensemble models](https://github.com/lorensha/Nagilums_Tree/tree/0ae9faa007e849417073d18e1956149bad91e735/Task%20One%3A%20comparison%20of%20architectures/decision%20tree%20ensemble%20models) contains five Python files, one for each of the decision tree ensmeble architectures:
+The folder [decision tree ensemble models](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/d644e651a57059bc12393dcc9ff87d53cbad9030/Task%201%3A%20Comparison%20of%20ML%20architectures/Decision%20tree%20ensemble%20models) contains five Python files, one for each of the decision tree ensmeble architectures:
 - Random Forest
 - ExtraTree
 - Gradient Boosting
 - Histogram-based Gradient Boosting
 - XGBoost
 
-The [Calculations]() file is required to be in place for the classification system to execute calculations concerning the FDR and confusion matrix
+The [Calculations](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/d644e651a57059bc12393dcc9ff87d53cbad9030/Task%201%3A%20Comparison%20of%20ML%20architectures/Calculations.py) file is required to be in place for the classification system to execute calculations concerning the FDR and confusion matrix
 
 The output is a .csv file saved locally onto a personal system.
-The [Graphical visualisation]() file is setup to receive all 5 files and return figures of:
+The [Graphical visualisation](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/d644e651a57059bc12393dcc9ff87d53cbad9030/Task%201%3A%20Comparison%20of%20ML%20architectures/graphical_visualisation.py) file is setup to receive all 5 files and return figures of:
 - AUROC curve
 - PR curve
 - Histograms
@@ -36,4 +36,15 @@ The [Graphical visualisation]() file is setup to receive all 5 files and return 
 The figures will receive the appropriate title of the architecture with all legends and descriptors.
 
 ## [Task 2: Decoy variant concept]()
+This folder contains the Python files required to conduct the [decoy variant strategy](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/d644e651a57059bc12393dcc9ff87d53cbad9030/Task%202%3A%20Decoy%20variant%20concept/decoy_variant_search_strategy.py) and the [decoy seq strategy](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/d644e651a57059bc12393dcc9ff87d53cbad9030/Task%202%3A%20Decoy%20variant%20concept/decoy_sequence_search_strategy.py). 
+
+The [Calculations](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/calculations.py) Python file is required to be in place for the classification system to execute calculations concerning FDR, PEP and confusion matrix.
+
+The files are setup to iterate through a local folder containing the iPSC PSM data files. Classification is setup for the ExtraTrees architecture under the Scikit-learn library. The classified PSM datasets are saved locally as .csv files with the appropriate names of the iPSC development stage (Stage 0 and Stage 4) and cell type (wild type and mutant).
+
+The [Graphical visualisation](https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/graphical_visualisation.py) file is setup to receive all 12 for both the _decoy variant strategy_ and _decoy seq strategy_ files and return figures from plots_and_figures(https://github.com/lorensha/Nagilums-Tree-pipeline/blob/7c0a953b74b20ededd308a6e809693ac82909dfc/Task%202%3A%20Decoy%20variant%20concept/plots_and_figures.py):
+- Histograms
+- Cumulative count of PEP comparisons
+- PEP distribution plots
+
 
