@@ -15,7 +15,7 @@ Three implementation tasks are incorporated into this pipeline using the same cl
 
 A brief description of the tasks are provided below:
 
-## [**Task 1: Comparison of ML architectures**](https://github.com/lorensha/Nagilums_Tree/tree/991e08fc209da806fcd8240d57f25fe3b28ce680/Task%20One%3A%20comparison%20of%20architectures)
+## [**Task 1: Comparison of ML architectures**]([https://github.com/lorensha/Nagilums_Tree/tree/991e08fc209da806fcd8240d57f25fe3b28ce680/Task%20One%3A%20comparison%20of%20architectures](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/5c9c79f221e35b1ff1c3559e8c39d1f4b26dc041/Task%201%3A%20Comparison%20of%20ML%20architectures)
 The folder [decision tree ensemble models](https://github.com/lorensha/Nagilums_Tree/tree/0ae9faa007e849417073d18e1956149bad91e735/Task%20One%3A%20comparison%20of%20architectures/decision%20tree%20ensemble%20models) contains five Python files, one for each of the decision tree ensmeble architectures:
 - Random Forest
 - ExtraTree
