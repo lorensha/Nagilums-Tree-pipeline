@@ -35,5 +35,5 @@ The [Graphical visualisation]() file is setup to receive all 5 files and return 
 
 The figures will receive the appropriate title of the architecture with all legends and descriptors.
 
-## [Task 2: Decoy variant strategy]()
+## [Task 2: Decoy variant concept]()
 
