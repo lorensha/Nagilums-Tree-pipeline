@@ -54,5 +54,3 @@ The [MODY gene .txt. files](https://github.com/lorensha/Nagilums-Tree-pipeline/t
 The [MODY expression plots](https://github.com/lorensha/Nagilums-Tree-pipeline/tree/9fee31449552b9f23c6e5a45c34d594094576869/Task%203%3A%20MODY%20expression%20analysis/MODY%20expression%20plots) folder contains the Python files to create the MODY PEP expression plots visualised in the Thesis, supplementary figures of the collective MODY list and MODY expression of the variant PSMs only.
 
 The protein-protein interaction network map is created using STRING API for future works and the Python file is included in this folder.
-
-[Sun library link](https://scholar.sun.ac.za/communities/a80c7764-b886-49f6-a6dd-b742371654df)
