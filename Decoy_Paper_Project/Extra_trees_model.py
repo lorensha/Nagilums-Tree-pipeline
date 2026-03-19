@@ -21,8 +21,6 @@ for input_file, output_file in files.items():
     print(f"\n>>> Processing: {input_file}")
 
     psm_dataset = pd.read_table(os.path.join(DATA_DIR, input_file), header=0)
-    # PSM dataset: Tonsil pp (Wang et al)
-    psm_dataset = pd.read_table('Chapter_One_Tonsil_Input_File.txt', header=0)
     start_time = time.time()
 
     # Setup base estimator: Feature variable & class labels
