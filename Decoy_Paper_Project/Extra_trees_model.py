@@ -129,7 +129,7 @@ for input_file, output_file in files.items():
 
                 grid = {'n_estimators': [100, 200], 'min_samples_leaf': [20, 100], 'max_depth': [3, 5]}
 
-                extra_trees_hyperparameter_search = (GridSearchCV(estimator=ExtraTreesClassifier(warm_start=False),
+                extra_trees_hyperparameter_search = (GridSearchCV(estimator=ExtraTreesClassifier(warm_start=False, n_jobs=4)),
                                                                   param_grid=grid, n_jobs=4))
 
                 extra_trees_hyperparameter_search.fit(nested_cross_validation_training_feature,
