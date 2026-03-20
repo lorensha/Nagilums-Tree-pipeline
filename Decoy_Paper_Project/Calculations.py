@@ -16,10 +16,6 @@ def fdr_calculation(dataframe):
             decoy.append(counter + 1)
             target.append(0)
             
-        if (counter) % 100000 == 0:
-            print(counter)
-
-
     # Counter for Target and Decoy hits
     dataframe['Target Counter'] = target
     dataframe['Decoy Counter'] = decoy
@@ -44,6 +40,7 @@ def fdr_calculation(dataframe):
 
     dataframe['FDR'] = fdr_list
     print(dataframe.head())
+    print("FDR complete")
 
     return dataframe
 
@@ -155,6 +152,7 @@ def confusion_matrix_dataframe(dataframe):
     return sorted_predicted_probability_dataframe
 
 def pep_calculation(dataframe):
+    print ("PEP begins")
     total = len(dataframe)
     pep_score_list = []
     count = 0
