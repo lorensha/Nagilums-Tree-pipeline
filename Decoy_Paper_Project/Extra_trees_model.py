@@ -136,6 +136,7 @@ def extra_trees_main_predictor(psm_input_file):
                                                   nested_cross_validation_training_labels)
             best_parameters_compiled = extra_trees_hyperparameter_search.best_params_
             hyperparameter_grid_search_list.append(best_parameters_compiled)
+            print(hyperparameter_grid_search_list)
 
         # select most common occurring parameters
         best_parameters = grid_search_best_parameters(hyperparameter_grid_search_list)
