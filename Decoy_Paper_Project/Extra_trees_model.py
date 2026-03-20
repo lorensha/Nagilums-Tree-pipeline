@@ -21,6 +21,8 @@ for input_file, output_file in files.items():
     print(f"\n>>> Processing: {input_file}")
 
     psm_dataset = pd.read_table(os.path.join(DATA_DIR, input_file), header=0)
+    total_rows = len(psm_dataset)
+    print(f"    >> Dataset loaded: {total_rows:,} rows")
     start_time = time.time()
 
     # Setup base estimator: Feature variable & class labels
