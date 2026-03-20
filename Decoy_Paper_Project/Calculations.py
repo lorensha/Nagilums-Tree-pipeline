@@ -20,7 +20,7 @@ def fdr_calculation(dataframe):
             target.append(0)
             
         if (counter) % 100000 == 0:
-            print(f"        -- FDR loop: {i + 1:,} / {total:,} rows ({(i + 1) / total * 100:.1f}%)")
+            print(counter)
 
 
     # Counter for Target and Decoy hits
@@ -33,6 +33,7 @@ def fdr_calculation(dataframe):
     new_counter = 0
 
     fdr_list = []
+    print("FDR going")
     for PSMiD in dataframe.index:
         try:
             fdr_score = (dataframe['Decoy'][PSMiD]) / (dataframe['Target'][PSMiD])
@@ -45,7 +46,7 @@ def fdr_calculation(dataframe):
         fdr_list.append(fdr_score)
 
         if (new_counter) % 100000 == 0:
-                print(f"        -- FDR loop: {i + 1:,} / {total:,} rows ({(i + 1) / total * 100:.1f}%)")
+                print(new_counter)
 
     dataframe['FDR'] = fdr_list
 
@@ -181,9 +182,10 @@ def pep_calculation(dataframe):
         pep_score = (decoys / targets)
         pep_score_list.append(pep_score)
         if (count) % 100000 == 0:
-            print(f"        -- PEP: {i + 1:,} / {total:,} rows ({(i + 1) / total * 100:.1f}%)")
+            print(count)
 
 
     dataframe['pep_scores'] = pep_score_list
+    print ("PEP complete")
 
     return dataframe
