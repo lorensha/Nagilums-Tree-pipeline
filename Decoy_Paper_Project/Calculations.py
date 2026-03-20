@@ -179,8 +179,13 @@ def pep_calculation(dataframe):
         targets = df_of_range[df_of_range['Label'] == 1].shape[0]
         decoys = df_of_range[df_of_range['Label'] == -1].shape[0]
 
-        pep_score = (decoys / targets)
+        try:
+            pep_score = (decoys / targets)
+        except ZeroDivisionError:
+            pep_score = 0
+            
         pep_score_list.append(pep_score)
+        
         if (count) % 100000 == 0:
             print(count)
 
