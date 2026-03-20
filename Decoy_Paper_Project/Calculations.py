@@ -3,6 +3,8 @@ import numpy as np
 
 
 def fdr_calculation(dataframe):
+    total = len(dataframe)
+    print(f"        -- FDR calculation started: {total:,} rows")
 
     counter = 0
     target = []
@@ -16,6 +18,10 @@ def fdr_calculation(dataframe):
         else:
             decoy.append(counter + 1)
             target.append(0)
+            
+        if (counter) % 100000 == 0:
+            print(f"        -- FDR loop: {i + 1:,} / {total:,} rows ({(i + 1) / total * 100:.1f}%)")
+
 
     # Counter for Target and Decoy hits
     dataframe['Target Counter'] = target
@@ -24,16 +30,22 @@ def fdr_calculation(dataframe):
     # Cumulative sum of each ID for Target and Decoy Counter
     dataframe['Target'] = np.cumsum(target)
     dataframe['Decoy'] = np.cumsum(decoy)
+    new_counter = 0
 
     fdr_list = []
     for PSMiD in dataframe.index:
         try:
             fdr_score = (dataframe['Decoy'][PSMiD]) / (dataframe['Target'][PSMiD])
+            new_counter + 1
 
         except ZeroDivisionError:
             fdr_score = 0
+            new_counter + 1
 
         fdr_list.append(fdr_score)
+
+        if (new_counter) % 100000 == 0:
+                print(f"        -- FDR loop: {i + 1:,} / {total:,} rows ({(i + 1) / total * 100:.1f}%)")
 
     dataframe['FDR'] = fdr_list
 
@@ -41,6 +53,8 @@ def fdr_calculation(dataframe):
 
 
 def confusion_matrix_dataframe(dataframe):
+    total = len(dataframe)
+    print(f"        -- Confusion matrix calculation started: {total:,} rows")
 
     sorted_predicted_probability_dataframe = dataframe
 
@@ -56,7 +70,8 @@ def confusion_matrix_dataframe(dataframe):
         else:
             decoy.append(counter + 1)
             target.append(0)
-
+            
+    print("confusion matrix metrics:")
     # Counter for Target and Decoy hits
     sorted_predicted_probability_dataframe['Target Counter'] = target
     sorted_predicted_probability_dataframe['Decoy Counter'] = decoy
@@ -95,6 +110,7 @@ def confusion_matrix_dataframe(dataframe):
     # ROC curve calculations
     # Specificity = FP / (FP + TN)
     specificity = []
+    print("calculating specificity")
     for PSMiD in sorted_predicted_probability_dataframe.index:
         specificity_score = sorted_predicted_probability_dataframe['FP'][PSMiD] / (
                 sorted_predicted_probability_dataframe
@@ -105,6 +121,7 @@ def confusion_matrix_dataframe(dataframe):
         specificity.append(specificity_score)
 
     # Sensitivity = TP / (TP + FN)
+    print("calculating sensitivity")
     sensitivity = []
     for PSMiD in sorted_predicted_probability_dataframe.index:
         sensitivity_score = sorted_predicted_probability_dataframe['TP'][PSMiD] / (
@@ -118,6 +135,7 @@ def confusion_matrix_dataframe(dataframe):
     sorted_predicted_probability_dataframe['1 - Specificity'] = specificity
 
     # precision / recall curve calculations
+    print("calculating precision")
     precision_scores = []
     for PSMiD in sorted_predicted_probability_dataframe.index:
         precision = sorted_predicted_probability_dataframe['TP'][PSMiD] / (sorted_predicted_probability_dataframe
@@ -127,6 +145,7 @@ def confusion_matrix_dataframe(dataframe):
         precision_scores.append(precision)
 
     recall_scores = []
+    print("calculating recall")
     for PSMiD in sorted_predicted_probability_dataframe.index:
         recall = sorted_predicted_probability_dataframe['TP'][PSMiD] / (sorted_predicted_probability_dataframe
                                                                         ['TP'][PSMiD] +
@@ -136,10 +155,13 @@ def confusion_matrix_dataframe(dataframe):
 
     sorted_predicted_probability_dataframe['Precision'] = precision_scores
     sorted_predicted_probability_dataframe['Recall'] = recall_scores
+    print(f"        -- Confusion matrix complete!")
 
     return sorted_predicted_probability_dataframe
 
 def pep_calculation(dataframe):
+    total = len(dataframe)
+    print(f"        -- PEP calculation started: {total:,} rows")
     pep_score_list = []
     count = 0
 
@@ -158,6 +180,9 @@ def pep_calculation(dataframe):
 
         pep_score = (decoys / targets)
         pep_score_list.append(pep_score)
+        if (count) % 100000 == 0:
+            print(f"        -- PEP: {i + 1:,} / {total:,} rows ({(i + 1) / total * 100:.1f}%)")
+
 
     dataframe['pep_scores'] = pep_score_list
 
