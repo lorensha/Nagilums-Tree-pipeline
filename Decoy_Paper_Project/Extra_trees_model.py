@@ -220,7 +220,6 @@ for input_file, output_file in files.items():
                                                           'Probability P(-1)': main_predictor_probability_scores[:, 0]})
 
         main_predictor_complete_dataframe = main_predictor_complete_dataframe.sort_values(by=['Probability P(-1)'])
-        print("FDR final main classification running")
         main_predictor_complete_dataframe = fdr_calculation(main_predictor_complete_dataframe)
         print("FDR final main classification complete")
 
@@ -267,12 +266,8 @@ for input_file, output_file in files.items():
             predictor_output_dropped_fdr_df = best_predictor_output.drop(columns=['Target Counter', 'Decoy Counter',
                                                                                   'Target', 'Decoy'])
             # calculate the confusion matrix for further analysis
-            print("Confusion matrix running")
             best_predictor_output_confusion_matrix = confusion_matrix_dataframe(predictor_output_dropped_fdr_df)
-            print("FDR confusion matrix complete")
-            print("PEP calcualtion running")
             best_predictor_output_confusion_matrix = pep_calculation(best_predictor_output_confusion_matrix)
-            print("PEP calcualtion compelete")
             best_predictor_output_confusion_matrix.to_csv(os.path.join(RESULTS_DIR, output_file))
             print(f">>> Saved: {output_file}")
             return best_predictor_output_confusion_matrix
