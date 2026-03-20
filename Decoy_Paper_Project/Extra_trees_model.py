@@ -72,6 +72,7 @@ for input_file, output_file in files.items():
 
     # function to extract most common variables after hyperparameter tuning
     def grid_search_best_parameters(parameter_list):
+        print("grid search")
         counter = 0
         best_parameters = parameter_list[0]
 
@@ -87,6 +88,7 @@ for input_file, output_file in files.items():
     # function of main predictor
     def extra_trees_main_predictor(psm_input_file):
         # create list variables for PSM selection and hyperparameter tuning
+        print("main predictor begins")
         best_scoring_psms_list = []
         hyperparameter_grid_search_list = []
 
@@ -96,6 +98,7 @@ for input_file, output_file in files.items():
 
         # 3-fold cross-validation
         for fold_01, (train_index_01, test_index_01) in (
+            print(f"        -- Outer fold {fold_01 + 1}/3 running...")
                 enumerate(stratified_kfold_setup.split(psm_dataset_single_feature_variable_sample,
                                                        psm_dataset_single_feature_labels_sample))):
             # 2 folds for training
@@ -117,6 +120,7 @@ for input_file, output_file in files.items():
 
             # nested 3-fold cross-validation for hyperparameter search using psms of a single feature variable
             for fold_02, (train_index_02, test_index_02) in (
+                print(f"           -- Inner fold {fold_02 + 1}/3 | GridSearch running...")
                     enumerate(stratified_kfold_setup.split(selected_psms_feature_variable, selected_psms_labels))):
                 # 2-folds for training
                 nested_cross_validation_training_sample = training_folds.iloc[train_index_02]
@@ -168,7 +172,9 @@ for input_file, output_file in files.items():
             # sort dataframe by prediction probability score in ascending order
             # calculate FDR and select psms with an 1% FDR threshold
             cross_validation_complete_dataframe = cross_validation_complete_dataframe.sort_values(by=['Probability P(-1)'])
+            print("FDR grid search running")
             cross_validation_complete_dataframe = fdr_calculation(cross_validation_complete_dataframe)
+            print("FDR grid search running complete")
             psms_within_fdr_threshold_cross_val = cross_validation_complete_dataframe[cross_validation_complete_dataframe
                                                                                       ['FDR'] <= 0.01]
             # add selected PSMs to the appropriate list
@@ -212,7 +218,9 @@ for input_file, output_file in files.items():
                                                           'Probability P(-1)': main_predictor_probability_scores[:, 0]})
 
         main_predictor_complete_dataframe = main_predictor_complete_dataframe.sort_values(by=['Probability P(-1)'])
+        print("FDR final main classification running")
         main_predictor_complete_dataframe = fdr_calculation(main_predictor_complete_dataframe)
+        print("FDR final main classification complete")
 
         return main_predictor_complete_dataframe
 
@@ -227,6 +235,7 @@ for input_file, output_file in files.items():
         number_of_confident_targets_df = most_confidently_predicted_psms[most_confidently_predicted_psms['Label'] == 1]
         number_of_confident_targets_df = len(number_of_confident_targets_df)
         targets_count_list.append(number_of_confident_targets_df)
+        print(targets_count_list)
 
         # compare target PSM count of current main prediction and that of the previous run
         # if the count is more, run the main prediction again using the current main predictors ranked PSM dataset
@@ -235,6 +244,8 @@ for input_file, output_file in files.items():
         second_last_iteration_target_count = targets_count_list[-2]
 
         if last_iteration_target_count >= second_last_iteration_target_count:
+            print(f"    >> Count improved or equal — rerunning with re-ranked dataset...")
+    
             # use PSM indices in their current ranking to obtain a re-ranked PSM dataset
             index_list_of_predictor_output = predictor_output.index.tolist()
             new_input_data = input_psms_original.iloc[index_list_of_predictor_output]
@@ -248,13 +259,18 @@ for input_file, output_file in files.items():
 
         else:
             # select previous dataframe from the main predictor output list
+            print(f"    >> Count did not improve — selecting best output and saving...")
             best_predictor_output = predictor_dataframe_list[-2]
             # remove columns from previous run to prevent duplicates
             predictor_output_dropped_fdr_df = best_predictor_output.drop(columns=['Target Counter', 'Decoy Counter',
                                                                                   'Target', 'Decoy'])
             # calculate the confusion matrix for further analysis
+            print("Confusion matrix running")
             best_predictor_output_confusion_matrix = confusion_matrix_dataframe(predictor_output_dropped_fdr_df)
+            print("FDR confusion matrix complete")
+            print("PEP calcualtion running")
             best_predictor_output_confusion_matrix = pep_calculation(best_predictor_output_confusion_matrix)
+            print("PEP calcualtion compelete")
             best_predictor_output_confusion_matrix.to_csv(os.path.join(RESULTS_DIR, output_file))
             print(f">>> Saved: {output_file}")
             return best_predictor_output_confusion_matrix
