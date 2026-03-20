@@ -100,9 +100,9 @@ for input_file, output_file in files.items():
 
         # 3-fold cross-validation
         for fold_01, (train_index_01, test_index_01) in (
-            print(f"        -- Outer fold {fold_01 + 1}/3 running...")
             enumerate(stratified_kfold_setup.split(psm_dataset_single_feature_variable_sample,
-                                                       psm_dataset_single_feature_labels_sample)):
+                                                   psm_dataset_single_feature_labels_sample))):
+            print("outer loop begins")
             # 2 folds for training
             training_folds = psm_input_file.iloc[train_index_01]
             # 1 fold for validation
@@ -122,8 +122,8 @@ for input_file, output_file in files.items():
 
             # nested 3-fold cross-validation for hyperparameter search using psms of a single feature variable
             for fold_02, (train_index_02, test_index_02) in (
-                print(f"           -- Inner fold {fold_02 + 1}/3 | GridSearch running...")
-                    enumerate(stratified_kfold_setup.split(selected_psms_feature_variable, selected_psms_labels))):
+                enumerate(stratified_kfold_setup.split(selected_psms_feature_variable, selected_psms_labels))):
+                print("nested loop begins")
                 # 2-folds for training
                 nested_cross_validation_training_sample = training_folds.iloc[train_index_02]
                 # 1-fold for validation *unneeded for further use as the outer layers are validated only
