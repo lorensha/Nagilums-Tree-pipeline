@@ -130,8 +130,8 @@ def extra_trees_main_predictor(psm_input_file):
 
             grid = {'n_estimators': [100, 200], 'min_samples_leaf': [20, 100], 'max_depth': [3, 5]}
             print("grid precheck")
-            extra_trees_hyperparameter_search = GridSearchCV(estimator=ExtraTreesClassifier(warm_start=False, n_jobs=4),
-                                                              param_grid=grid, n_jobs=4)
+            extra_trees_hyperparameter_search = GridSearchCV(estimator=ExtraTreesClassifier(warm_start=False, n_jobs=2),
+                                                              param_grid=grid, n_jobs=8)
 
             extra_trees_hyperparameter_search.fit(nested_cross_validation_training_feature,
                                                   nested_cross_validation_training_labels)
@@ -152,7 +152,7 @@ def extra_trees_main_predictor(psm_input_file):
         testing_single_feature_labels_sample = np.array(validation_fold['Label'])
 
         # fit model and obtain PSM class type predictions and probability scores
-        extra_trees_cross_validation_model = ExtraTreesClassifier(warm_start=False, **best_parameters, n_jobs=4)
+        extra_trees_cross_validation_model = ExtraTreesClassifier(warm_start=False, **best_parameters, n_jobs=8)
         extra_trees_cross_validation_model.fit(training_single_feature_variable_sample,
                                                training_single_feature_labels_sample)
 
@@ -201,7 +201,7 @@ def extra_trees_main_predictor(psm_input_file):
     best_hyperparameters = grid_search_best_parameters(hyperparameter_grid_search_list)
 
     # fit model and obtain psm class type predictions and probability scores
-    extra_trees_final_model = ExtraTreesClassifier(warm_start=False, **best_hyperparameters, n_jobs=4)
+    extra_trees_final_model = ExtraTreesClassifier(warm_start=False, **best_hyperparameters, n_jobs=8)
     extra_trees_final_model.fit(training_all_feature_variables_sample, training_all_feature_labels_sample)
 
     main_predictor_predictions = extra_trees_final_model.predict(testing_all_feature_variables_sample)
@@ -282,7 +282,7 @@ for input_file, output_file in files.items():
     main_predictor_output_list = []
     
     # initiate main prediction by calling the counting system to begin the conditional target PSM counting loop
-    with parallel_backend('loky', n_jobs=4):
+    with parallel_backend('loky', n_jobs=8):
         final_output = counting_system(fdr_dataset_pep, cumulated_target_psms_list, main_predictor_output_list)
     
     end_time = time.time()
