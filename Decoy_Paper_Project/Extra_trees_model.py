@@ -128,9 +128,10 @@ def extra_trees_main_predictor(psm_input_file):
             nested_cross_validation_training_labels = np.array(nested_cross_validation_training_sample['Label'])
 
             grid = {'n_estimators': [100, 200], 'min_samples_leaf': [20, 100], 'max_depth': [3, 5]}
-
+            print("grid precheck")
             extra_trees_hyperparameter_search = GridSearchCV(estimator=ExtraTreesClassifier(warm_start=False, n_jobs=4),
                                                               param_grid=grid, n_jobs=4)
+            print("grid check")
 
             extra_trees_hyperparameter_search.fit(nested_cross_validation_training_feature,
                                                   nested_cross_validation_training_labels)
