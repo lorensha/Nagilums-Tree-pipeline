@@ -149,9 +149,10 @@ def extra_trees_main_predictor(psm_input_file):
 
         # fit model and obtain PSM class type predictions and probability scores
         extra_trees_cross_validation_model = ExtraTreesClassifier(warm_start=False, **best_parameters, n_jobs=8)
+        print("Extra Trees first begins")
         extra_trees_cross_validation_model.fit(training_single_feature_variable_sample,
                                                training_single_feature_labels_sample)
-
+        print("Extra Trees first done")
         cross_validation_predictions = (extra_trees_cross_validation_model.predict
                                         (testing_single_feature_variable_sample))
         cross_validation_probability_scores = (extra_trees_cross_validation_model.predict_proba
@@ -197,8 +198,10 @@ def extra_trees_main_predictor(psm_input_file):
     best_hyperparameters = grid_search_best_parameters(hyperparameter_grid_search_list)
 
     # fit model and obtain psm class type predictions and probability scores
+    print("Extra Trees final begins")
     extra_trees_final_model = ExtraTreesClassifier(warm_start=False, **best_hyperparameters, n_jobs=8)
     extra_trees_final_model.fit(training_all_feature_variables_sample, training_all_feature_labels_sample)
+    print("Extra Trees final done")
 
     main_predictor_predictions = extra_trees_final_model.predict(testing_all_feature_variables_sample)
     main_predictor_probability_scores = (extra_trees_final_model.predict_proba
