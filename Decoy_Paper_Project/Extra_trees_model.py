@@ -6,6 +6,7 @@ from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from sklearn.ensemble import ExtraTreesClassifier
 from Calculations import *
 import os
+from joblib import parallel_backend
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
 DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants/'
@@ -281,7 +282,8 @@ for input_file, output_file in files.items():
     main_predictor_output_list = []
     
     # initiate main prediction by calling the counting system to begin the conditional target PSM counting loop
-    final_output = counting_system(fdr_dataset_pep, cumulated_target_psms_list, main_predictor_output_list)
+    with parallel_backend('loky', n_jobs=4):
+        final_output = counting_system(fdr_dataset_pep, cumulated_target_psms_list, main_predictor_output_list)
     
     end_time = time.time()
     ft = (end_time - start_time) / 60
