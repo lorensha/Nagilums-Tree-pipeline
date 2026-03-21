@@ -132,10 +132,10 @@ def extra_trees_main_predictor(psm_input_file):
             print("grid precheck")
             extra_trees_hyperparameter_search = GridSearchCV(estimator=ExtraTreesClassifier(warm_start=False, n_jobs=4),
                                                               param_grid=grid, n_jobs=4)
-            print("grid check")
 
             extra_trees_hyperparameter_search.fit(nested_cross_validation_training_feature,
                                                   nested_cross_validation_training_labels)
+            print("grid check") 
             best_parameters_compiled = extra_trees_hyperparameter_search.best_params_
             hyperparameter_grid_search_list.append(best_parameters_compiled)
             print(hyperparameter_grid_search_list)
