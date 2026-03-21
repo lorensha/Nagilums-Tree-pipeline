@@ -12,7 +12,6 @@ DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants/'
 RESULTS_DIR = '/mnt/cargo/lorensha/results/'
 
 files = {
-    'SAMEA7718756_percolator_input_extended.tsv': 'NT_SAMEA7718756_decoy_variants.csv',
     'SAMEA7718760_percolator_input_extended.tsv': 'NT_SAMEA7718760_decoy_variants.csv',
     'SAMEA7718763_percolator_input_extended.tsv': 'NT_SAMEA7718763_decoy_variants.csv'
 }
