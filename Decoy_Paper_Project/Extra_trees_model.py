@@ -6,7 +6,6 @@ from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from sklearn.ensemble import ExtraTreesClassifier
 from Calculations import *
 import os
-from joblib import parallel_backend
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
 DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants/'
@@ -17,8 +16,6 @@ files = {
     'SAMEA7718760_percolator_input_extended.tsv': 'NT_SAMEA7718760_decoy_variants.csv',
     'SAMEA7718763_percolator_input_extended.tsv': 'NT_SAMEA7718763_decoy_variants.csv'
 }
-
-start_time = time.time()
 
     # Setup base estimator: Feature variable & class labels
 feature_variables = ["measured_rt",
@@ -224,9 +221,12 @@ def extra_trees_main_predictor(psm_input_file):
 
 
 def counting_system(input_psms_original, targets_count_list, predictor_dataframe_list):
+    print("counting system begins")
     # run main predictor function using ranked PSM dataset, append to the appropriate list
     predictor_output = extra_trees_main_predictor(input_psms_original)
     predictor_dataframe_list.append(predictor_output)
+    print("main predictor ran")
+    print(predictor_output(head))
 
     # count the number of target PSMs with a prediction probability score <= 0.1, append to appropriate list
     most_confidently_predicted_psms = predictor_output[predictor_output['Probability P(-1)'] <= 0.1]
@@ -271,6 +271,8 @@ def counting_system(input_psms_original, targets_count_list, predictor_dataframe
 
 for input_file, output_file in files.items():
     print(f"file is being processed: {input_file}")
+    start_time = time.time()
+    print(start_time)
 
     psm_dataset = pd.read_table(os.path.join(DATA_DIR, input_file), header=0)
     # rank in ascending order by pep feature variable and estimate FDR
@@ -282,8 +284,8 @@ for input_file, output_file in files.items():
     main_predictor_output_list = []
     
     # initiate main prediction by calling the counting system to begin the conditional target PSM counting loop
-    with parallel_backend('loky', n_jobs=8):
-        final_output = counting_system(fdr_dataset_pep, cumulated_target_psms_list, main_predictor_output_list)
+
+    final_output = counting_system(fdr_dataset_pep, cumulated_target_psms_list, main_predictor_output_list)
     
     end_time = time.time()
     ft = (end_time - start_time) / 60
