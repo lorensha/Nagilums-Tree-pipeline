@@ -9,10 +9,9 @@ import os
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
 DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants/'
-RESULTS_DIR = '/mnt/cargo/lorensha/results/'
+RESULTS_DIR = '/mnt/cargo/lorensha/results2/'
 
 files = {
-    'SAMEA7718760_percolator_input_extended.tsv': 'NT_SAMEA7718760_decoy_variants.csv',
     'SAMEA7718763_percolator_input_extended.tsv': 'NT_SAMEA7718763_decoy_variants.csv'
 }
 
@@ -228,7 +227,7 @@ def counting_system(input_psms_original, targets_count_list, predictor_dataframe
     predictor_output = extra_trees_main_predictor(input_psms_original)
     predictor_dataframe_list.append(predictor_output)
     print("main predictor ran")
-    print(predictor_output(head))
+    print(predictor_output.head())
 
     # count the number of target PSMs with a prediction probability score <= 0.1, append to appropriate list
     most_confidently_predicted_psms = predictor_output[predictor_output['Probability P(-1)'] <= 0.1]
