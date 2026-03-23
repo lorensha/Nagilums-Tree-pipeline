@@ -8,11 +8,11 @@ from Calculations import *
 import os
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
-DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants/'
-RESULTS_DIR = '/mnt/cargo/lorensha/results2/'
+DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/reversed_decoys/'
+RESULTS_DIR = '/mnt/cargo/lorensha/reversed_decoys_results/'
 
 files = {
-    'SAMEA7718763_percolator_input_extended.tsv': 'NT_SAMEA7718763_decoy_variants.csv'
+    'SAMEA7718756_percolator_input_extended.tsv': 'NT_SAMEA7718756_reversed_decoys.csv'
 }
 
     # Setup base estimator: Feature variable & class labels
