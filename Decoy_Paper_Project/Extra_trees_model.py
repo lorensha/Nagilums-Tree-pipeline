@@ -8,7 +8,7 @@ from Calculations import *
 import os
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
-DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants/'
+DATA_DIR = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/reversed_decoys/'
 RESULTS_DIR = '/mnt/cargo/lorensha/results2/'
 
 files = {
