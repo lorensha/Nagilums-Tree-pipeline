@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import glob
 
-percolator_files_dir = 'mnt/cargo/lorensha/PXD010154_tonsil_trypsin/reversed_decoys/percolator/'
+percolator_files_dir = '/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/reversed_decoys/percolator/'
 cols = ["PSMId", "score", "q-value", "posterior_error_prob", "peptide", "proteinIds"]
 
 subfolders = [f.path for f in os.scandir(percolator_files_dir) if f.is_dir()]
