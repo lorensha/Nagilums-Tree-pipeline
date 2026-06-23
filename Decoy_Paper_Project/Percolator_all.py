@@ -4,7 +4,7 @@ import os
 import re
 
 folder1 = "/mnt/cargo/lorensha/Percolator_results/"
-folder2 = "/mnt/cargo/lorensha/reversed_decoys_results"
+folder2 = "/mnt/cargo/lorensha/decoy_variants_results"
 output_folder = "/mnt/cargo/lorensha/Percolator_results/"
 
 combined_files = glob.glob(os.path.join(folder1, "*_wFV.csv"))
