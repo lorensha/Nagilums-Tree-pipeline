@@ -23,6 +23,6 @@ for folder in subfolders:
 
     folder_name = os.path.basename(folder)
     output_path = os.path.join(folder, f"{folder_name}_combined.txt")
-    Percolator_results.to_csv(output_path, sep="\t", index=False)
+    Percolator_results.to_csv(output_path, index=False)
 
     print(f"Combined: {output_path}  ({Percolator_results.shape[0]} rows)")
