@@ -40,8 +40,8 @@ for subfolder in subfolders:
         continue
 
     # Read files
-    df_combined = pd.read_csv(combined_path, sep="\t")
-    df_wFV = pd.read_csv(percolator_path, sep="\t")
+    df_combined = pd.read_csv(combined_path)
+    df_wFV = pd.read_csv(percolator_path)
     df_wFV = df_wFV.rename(columns={"PSMiD": "PSMId"})
 
     # Merge
@@ -51,6 +51,6 @@ for subfolder in subfolders:
     os.makedirs(output_folder, exist_ok=True)
 
     output_path = os.path.join(output_folder, f"{sample_id}_wFV.csv")
-    merged_results.to_csv(output_path, sep="\t", index=False)
+    merged_results.to_csv(output_path, index=False)
 
     print(f"Combined: {sample_id} -> {output_path} ({merged_results.shape[0]} rows)")
