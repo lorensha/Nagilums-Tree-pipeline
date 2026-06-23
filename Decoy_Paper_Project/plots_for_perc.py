@@ -42,7 +42,7 @@ for reversed_decoy_path in combined_files:
     rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['psm_type1'] != 'contaminant']
 
     # select psms with target label = canonical psms only
-    rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['perc_Label'] == 1]
+    rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['Label_perc'] == 1]
     set1 = set(rd_qvalue_01['PSMId'])
 
     ## decoy variant setup
@@ -55,7 +55,7 @@ for reversed_decoy_path in combined_files:
     dv_qvalue = dv_qvalue[dv_qvalue['psm_type1'] != 'contaminant']
 
     # select psms with target label = canonical psms only
-    rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['perc_Label'] == 1]
+    rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['Label_perc'] == 1]
     set2 = set(rd_qvalue_01['PSMId'])
 
     venn2_unweighted([set1, set2], set_labels=('reversed decoys PSMs', 'decoy variant PSMs'),
