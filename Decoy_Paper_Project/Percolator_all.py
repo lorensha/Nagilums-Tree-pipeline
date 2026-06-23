@@ -35,8 +35,10 @@ for combined_path in combined_files:
 
     # Read files
     df_combined = pd.read_csv(combined_path)
+    print('rename psmid combined')
     df_combined = df_combined.rename(columns={"PSMId": "PSMId"})
     df_all = pd.read_csv(percolator_path)
+    print('rename info')
     df_all = df_all.rename(columns={"PSMiD": "PSMId"})
 
     # Merge
