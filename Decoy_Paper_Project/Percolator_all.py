@@ -3,8 +3,8 @@ import glob
 import os
 import re
 
-folder1 = "/mnt/cargo/lorensha/Percolator_results/"      # where *_combined.txt files live
-folder2 = "/mnt/cargo/lorensha/reversed_decoys_results"    # where *_percolator_input_extended.tsv files live
+folder1 = "/mnt/cargo/lorensha/Percolator_results/"      # location for csv with feature variables
+folder2 = "/mnt/cargo/lorensha/reversed_decoys_results"    # location for info file with gene ids and psm type columns
 output_folder = "/mnt/cargo/lorensha/Percolator_results/"
 
 # Get all combined.txt files
