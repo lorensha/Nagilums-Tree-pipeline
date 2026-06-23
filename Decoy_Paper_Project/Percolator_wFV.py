@@ -8,9 +8,9 @@ folder2 = "/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/reversed_decoys"    # wh
 output_folder = "/mnt/cargo/lorensha/Percolator_results/"
 
 # Get all combined.txt files
-combined_files = glob.glob(os.path.join(folder1, "*_combined.txt"))
+subfolders = [f.path for f in os.scandir(folder1) if f.is_dir()]
 
-for combined_path in combined_files:
+for combined_path in subfolders:
     filename = os.path.basename(combined_path)
 
     # Extract the ID prefix, e.g. 'SAMEA7718756'
