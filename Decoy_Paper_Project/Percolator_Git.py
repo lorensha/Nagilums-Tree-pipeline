@@ -22,7 +22,7 @@ for folder in subfolders:
     Percolator_results = pd.concat([target_psms, decoy_psms], ignore_index=True)
 
     folder_name = os.path.basename(folder)
-    output_path = os.path.join(folder, f"{folder_name}_combined.txt")
+    output_path = os.path.join(folder, f"{folder_name}_combined.csv")
     Percolator_results.to_csv(output_path, index=False)
 
     print(f"Combined: {output_path}  ({Percolator_results.shape[0]} rows)")
