@@ -34,8 +34,8 @@ for reversed_decoy_path in combined_files:
 
     ## reversed decoy setup
     # round q-value and filter df for 1%
-    reversed_decoy_df['q-value'] = reversed_decoy_df['q-value'].round(3)
-    rd_qvalue_01 = reversed_decoy_df[reversed_decoy_df['q-value'] <= 0.01]
+    # reversed_decoy_df['q-value'] = reversed_decoy_df['q-value'].round(3)
+    # rd_qvalue_01 = reversed_decoy_df[reversed_decoy_df['q-value'] <= 0.01]
 
     # remove contaminant and redundant psms
     rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['psm_type1'] != 'canonical-no-ref']
