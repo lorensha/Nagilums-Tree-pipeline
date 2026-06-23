@@ -42,7 +42,7 @@ for subfolder in subfolders:
     # Read files
     df_combined = pd.read_csv(combined_path)
     print(df_combined.head())
-    df_wFV = pd.read_csv(percolator_path)
+    df_wFV = pd.read_csv(percolator_path, sep="\t")
     print(df_wFV.head())
     df_wFV = df_wFV.rename(columns={"PSMiD": "PSMId"})
 
