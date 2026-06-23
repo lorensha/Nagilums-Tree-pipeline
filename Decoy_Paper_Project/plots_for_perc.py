@@ -36,7 +36,7 @@ for reversed_decoy_path in combined_files:
     # round q-value and filter df for 1%
     # reversed_decoy_df['q-value'] = reversed_decoy_df['q-value'].round(3)
     # rd_qvalue_01 = reversed_decoy_df[reversed_decoy_df['q-value'] <= 0.01]
-
+    rd_qvalue_01 = reversed_decoy_df
     # remove contaminant and redundant psms
     rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['psm_type1'] != 'canonical-no-ref']
     rd_qvalue_01 = rd_qvalue_01[rd_qvalue_01['psm_type1'] != 'contaminant']
@@ -47,9 +47,9 @@ for reversed_decoy_path in combined_files:
 
     ## decoy variant setup
     # round q-value and filter df for 1%
-    decoy_variant_df['q-value'] = decoy_variant_df['q-value'].round(3)
-    dv_qvalue = decoy_variant_df[decoy_variant_df['q-value'] <= 0.01]
-
+    # decoy_variant_df['q-value'] = decoy_variant_df['q-value'].round(3)
+    # dv_qvalue = decoy_variant_df[decoy_variant_df['q-value'] <= 0.01]
+    dv_qvalue = decoy_variant_df
     # remove contaminant and redundant psms
     dv_qvalue = dv_qvalue[dv_qvalue['psm_type1'] != 'canonical-no-ref']
     dv_qvalue = dv_qvalue[dv_qvalue['psm_type1'] != 'contaminant']
