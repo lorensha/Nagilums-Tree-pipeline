@@ -3,8 +3,8 @@ import glob
 import os
 import re
 
-folder1 = "/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/reversed_decoys/percolator/"      # where *_combined.txt files live
-folder2 = "/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/reversed_decoys"    # where *_percolator_input_extended.tsv files live
+folder1 = "/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants/percolator/"      # where *_combined.txt files live
+folder2 = "/mnt/cargo/lorensha/PXD010154_tonsil_trypsin/decoy_variants"    # where *_percolator_input_extended.tsv files live
 output_folder = "/mnt/cargo/lorensha/Percolator_results/"
 
 # Get all combined.txt files
@@ -31,7 +31,9 @@ for subfolder in subfolders:
     sample_id = match.group(1)
 
     # Build matching file
-    percolator_path = os.path.join(folder2, f"{sample_id}_percolator_input_extended.tsv")
+    percolator_path = os.path.join(folder2, f"{sample_id}_percolator_input_extended_fixed.tsv")
+    print(percolator_path)
+    print(f"{sample_id}_percolator_input_extended_fixed.tsv")
 
     print(f"Looking for: {percolator_path}")
 
